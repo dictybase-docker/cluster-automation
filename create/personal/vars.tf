@@ -1,8 +1,3 @@
-variable "gke_num_nodes" {
-  default     = 3
-  description = "number of gke nodes"
-}
-
 variable "project_id" {
   description = "gcp project id"
 }
@@ -11,6 +6,10 @@ variable "service_account" {
   description = "service account to be used by node vm"
 }
 
+variable "gke_num_nodes" {
+  default     = 3
+  description = "number of gke nodes"
+}
 
 variable "service_account_file" {
   default     = "credentials.json"
@@ -57,6 +56,10 @@ variable "resource_multiplier" {
   default = 2
 }
 
+variable "image_type" {
+  default = "cos_containerd"
+}
+
 locals {
-  gke_name_tag = format("%s-%s", var.project_id, "sidd-playground")
+  gke_name_tag = format("%s-%s", var.project_id, "personal-cluster")
 }
