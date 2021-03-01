@@ -2,9 +2,13 @@
 The GKE cluster is expected to be use by a single developer and therefore the __terraform state__
 is not expected to be shared.
 ## Prerequisites
-### Install terraform.
+### Install terraform
+From [here](https://www.terraform.io/downloads.html)
 ### Learn terraform
-### Learn IAM,role,permissions and service accounts from GCP's documentation.
+From [here](https://learn.hashicorp.com/terraform). 
+### Learn features of GCP
+* IAM,role and permissions from [here](https://cloud.google.com/iam/docs/overview). 
+* Service accounts from [here](https://cloud.google.com/iam/docs/service-accounts).
 ### Service account for running terraform 
 * Create a GCP `service account`.
 * The service account should have the following iam roles/permissions.
