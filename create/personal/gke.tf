@@ -56,14 +56,16 @@ resource "google_container_cluster" "primary" {
     }
   }
   private_cluster_config {
-    enable_private_nodes = true
+    enable_private_nodes    = true
+    enable_private_endpoint = true
+	master_ipv4_cidr_block = var.master_ipv4_cidr_block
     master_global_access_config {
       enabled = false
     }
   }
-  workload_identity_config {
-    identity_namespace = data.google_project.project.project_id
-  }
+  #workload_identity_config {
+  #  identity_namespace = data.google_project.project.project_id
+  #}
 }
 
 # Separately Managed Node Pool
@@ -84,7 +86,7 @@ resource "google_container_node_pool" "primary_nodes" {
   node_config {
     disk_size_gb    = var.disk_size_gb
     disk_type       = var.disk_type
-    service_account = var.node_service_account
+    service_account = var.service_account
     image_type      = var.image_type
     machine_type    = var.machine_type
     tags            = ["gke-node", local.gke_name_tag]

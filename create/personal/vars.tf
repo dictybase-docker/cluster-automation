@@ -60,6 +60,12 @@ variable "image_type" {
   default = "cos_containerd"
 }
 
+variable "master_ipv4_cidr_block" {
+  description = "The IP range in CIDR notation (size must be /28) to use for the hosted master network. This range will be used for assigning internal IP addresses to the master or set of masters, as well as the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network."
+  default     = "10.5.0.0/28"
+}
+
 locals {
   gke_name_tag = format("%s-%s", var.project_id, "personal-cluster")
 }
+
