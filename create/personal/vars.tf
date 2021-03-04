@@ -61,7 +61,7 @@ variable "image_type" {
 }
 
 variable "subnet_ipv4_cidr_range" {
-  default     = "10.10.10.10/16"
+  default     = "10.8.0.0/16"
   description = "The IP range in cidr notation for vpc subnet"
 }
 
