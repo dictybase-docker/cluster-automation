@@ -58,11 +58,16 @@ resource "google_container_cluster" "primary" {
   private_cluster_config {
     enable_private_nodes    = true
     enable_private_endpoint = true
-	master_ipv4_cidr_block = var.master_ipv4_cidr_block
+    master_ipv4_cidr_block  = local.master_ipv4_cidr_block
     master_global_access_config {
       enabled = false
     }
   }
+  ip_allocation_policy {
+    cluster_ipv4_cidr_block  = local.cluster_ipv4_cidr_block
+    services_ipv4_cidr_block = local.services_ipv4_cidr_block
+  }
+
   #workload_identity_config {
   #  identity_namespace = data.google_project.project.project_id
   #}
