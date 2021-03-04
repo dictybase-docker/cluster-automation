@@ -67,6 +67,11 @@ resource "google_container_cluster" "primary" {
     cluster_ipv4_cidr_block  = local.cluster_ipv4_cidr_block
     services_ipv4_cidr_block = local.services_ipv4_cidr_block
   }
+  master_authorized_networks_config {
+    cidr_blocks {
+      cidr_block = local.master_ipv4_cidr_block
+    }
+  }
 
   #workload_identity_config {
   #  identity_namespace = data.google_project.project.project_id
