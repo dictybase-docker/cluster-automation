@@ -58,18 +58,18 @@ resource "google_container_cluster" "primary" {
   private_cluster_config {
     enable_private_nodes    = true
     enable_private_endpoint = true
-    master_ipv4_cidr_block  = local.master_ipv4_cidr_block
+    master_ipv4_cidr_block  = var.master_ipv4_cidr_range
     master_global_access_config {
       enabled = false
     }
   }
   ip_allocation_policy {
-    cluster_ipv4_cidr_block  = local.cluster_ipv4_cidr_block
-    services_ipv4_cidr_block = local.services_ipv4_cidr_block
+    cluster_ipv4_cidr_block  = var.cluster_ipv4_cidr_range
+    services_ipv4_cidr_block = var.services_ipv4_cidr_range
   }
   master_authorized_networks_config {
     cidr_blocks {
-      cidr_block = local.master_ipv4_cidr_block
+      cidr_block = var.master_ipv4_cidr_range
     }
   }
 
@@ -80,11 +80,12 @@ resource "google_container_cluster" "primary" {
 
 # Separately Managed Node Pool
 resource "google_container_node_pool" "primary_nodes" {
-  name       = "primary-node-pool"
-  location   = var.zone
-  cluster    = google_container_cluster.primary.name
-  node_count = var.gke_num_nodes
-  version    = data.google_container_engine_versions.central1c.release_channel_default_version.STABLE
+  name              = "primary-node-pool"
+  location          = var.zone
+  cluster           = google_container_cluster.primary.name
+  node_count        = var.gke_num_nodes
+  version           = data.google_container_engine_versions.central1c.release_channel_default_version.STABLE
+  max_pods_per_node = var.max_pods_per_node
   management {
     auto_repair  = true
     auto_upgrade = true

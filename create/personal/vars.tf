@@ -60,15 +60,32 @@ variable "image_type" {
   default = "cos_containerd"
 }
 
-variable "subnet_ipv4_cidr_range" {
-  default     = "10.8.0.0/16"
-  description = "The IP range in cidr notation for vpc subnet"
+variable "max_pods_per_node" {
+  default = 50
 }
 
+variable "subnet_ipv4_cidr_range" {
+  default     = "10.8.0.0/21"
+  description = "The IP range in cidr notation for vpc subnet that will be assigned to nodes"
+}
+
+variable "cluster_ipv4_cidr_range" {
+  default     = "10.6.0.0/16"
+  description = "The IP range in cidr notation for pods in the cluster"
+}
+
+variable "services_ipv4_cidr_range" {
+  default     = "10.5.0.0/20"
+  description = "The IP range in cidr notation for services in the cluster"
+}
+
+variable "master_ipv4_cidr_range" {
+  default     = "10.4.0.0/28"
+  description = "The IP range in cidr notation for master in the cluster"
+}
+
+
 locals {
-  gke_name_tag             = format("%s-%s", var.project_id, "personal-cluster")
-  master_ipv4_cidr_block   = cidrsubnet(var.subnet_ipv4_cidr_range, 12, 1)
-  cluster_ipv4_cidr_block  = cidrsubnet(var.subnet_ipv4_cidr_range, 1, 0)
-  services_ipv4_cidr_block = cidrsubnet(var.subnet_ipv4_cidr_range, 1, 1)
+  gke_name_tag = format("%s-%s", var.project_id, "personal-cluster")
 }
 
