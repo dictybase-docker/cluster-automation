@@ -1,6 +1,17 @@
 # Provision a GKE Cluster for personal use 
 The GKE cluster is expected to be use by a single developer and therefore the __terraform state__
 is not expected to be shared.
+# Features of the cluster
+* Standard and [regional](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters?hl=en#regional_clusters).
+* Uses [release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters?hl=en#release_channel) for managing versions.
+* It will be
+  [VPC-native](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters?hl=en#vpc-clusters)
+  private cluster. 
+  * Node IP ranges: 10.8.0.0/21
+  * Pod IP ranges: 10.6.0.0/16
+  * Service IP ranges: 10.5.0.0/20
+  * Master IP ranges: 10.4.0.0/28
+* It only uses stable [kuberntes features](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters?hl=en#kubernetes_features).
 ## Prerequisites
 ### Install terraform
 From [here](https://www.terraform.io/downloads.html)
