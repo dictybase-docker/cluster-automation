@@ -28,11 +28,11 @@ resource "google_container_cluster" "primary" {
   }
   addons_config {
     horizontal_pod_autoscaling {
-      disabled = true
+      enabled = true
     }
   }
   vertical_pod_autoscaling {
-    enabled = true
+    disabled = true
   }
   maintenance_policy {
     recurring_window {
