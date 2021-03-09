@@ -30,7 +30,7 @@ resource "google_container_cluster" "primary" {
   }
   maintenance_policy {
     recurring_window {
-      start_time = var.start_time 
+      start_time = var.start_time
       end_time   = timeadd(var.start_time, "6h")
       recurrence = "FREQ=WEEKLY;BYDAY=SU,SA;WKST=SU"
     }

@@ -85,10 +85,13 @@ variable "master_ipv4_cidr_range" {
 }
 
 variable "start_time" {
-	default = "2021-03-09T16:50:39+00:00"
-description = "recurring start time for maintenance window"
+  default     = "2021-03-09T16:50:39+00:00"
+  description = "recurring start time for maintenance window"
 }
 
+variable "bucket_name" {
+  default = "tf-state-dev"
+}
 
 locals {
   gke_name_tag = format("%s-%s", var.project_id, "personal-cluster")
