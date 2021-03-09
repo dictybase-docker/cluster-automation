@@ -26,18 +26,10 @@ resource "google_container_cluster" "primary" {
       issue_client_certificate = false
     }
   }
-  addons_config {
-    horizontal_pod_autoscaling {
-      enabled = true
-    }
-  }
-  vertical_pod_autoscaling {
-    disabled = true
-  }
   maintenance_policy {
     recurring_window {
-      start_time = timestamp()
-      end_time   = timeadd(timestamp(), "6h")
+      start_time = var.start_time 
+      end_time   = timeadd(var.start_time, "6h")
       recurrence = "FREQ=WEEKLY;BYDAY=SU,SA;WKST=SU"
     }
   }
