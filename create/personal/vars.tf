@@ -84,6 +84,11 @@ variable "master_ipv4_cidr_range" {
   description = "The IP range in cidr notation for master in the cluster"
 }
 
+variable "start_time" {
+	default = "2021-03-09T16:50:39+00:00"
+description = "recurring start time for maintenance window"
+}
+
 
 locals {
   gke_name_tag = format("%s-%s", var.project_id, "personal-cluster")
