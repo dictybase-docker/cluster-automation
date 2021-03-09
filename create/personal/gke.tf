@@ -21,6 +21,8 @@ resource "google_container_cluster" "primary" {
 
   enable_shielded_nodes = true
 
+  max_pods_per_node = var.max_pods_per_node
+
   master_auth {
     client_certificate_config {
       issue_client_certificate = false
@@ -66,10 +68,6 @@ resource "google_container_cluster" "primary" {
       cidr_block = var.master_ipv4_cidr_range
     }
   }
-
-  #workload_identity_config {
-  #  identity_namespace = data.google_project.project.project_id
-  #}
 }
 
 # Separately Managed Node Pool
