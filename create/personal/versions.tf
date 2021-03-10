@@ -5,12 +5,7 @@ terraform {
       version = "3.58.0"
     }
   }
-  backend "gcs" {
-    bucket = var.bucket_name
-    prefix = local.gke_name_tag
-  }
-
-
+  backend "gcs" {}
   required_version = "~> 0.14"
 }
 

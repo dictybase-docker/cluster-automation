@@ -6,6 +6,13 @@ variable "service_account" {
   description = "service account to be used by node vm"
 }
 
+
+variable "bucket_name" {
+	description = "GCS bucket name where terraform remote
+state is stored. This name should be identical with the bucket
+name that is used in the backend config"
+}
+
 variable "gke_num_nodes" {
   default     = 2
   description = "number of gke nodes"
@@ -89,9 +96,6 @@ variable "start_time" {
   description = "recurring start time for maintenance window"
 }
 
-variable "bucket_name" {
-  default = "tf-state-dev"
-}
 
 locals {
   gke_name_tag = format("%s-%s", var.project_id, "personal-cluster")

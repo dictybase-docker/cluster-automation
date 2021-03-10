@@ -21,7 +21,7 @@ resource "google_container_cluster" "primary" {
 
   enable_shielded_nodes = true
 
-  max_pods_per_node = var.max_pods_per_node
+  default_max_pods_per_node = var.max_pods_per_node
 
   master_auth {
     client_certificate_config {
