@@ -30,3 +30,6 @@ override.tf.json
 
 # Ignore credentials file
 credentials.json
+
+# Ignore tfvars file
+*.tfvars
