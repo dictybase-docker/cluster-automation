@@ -121,9 +121,12 @@ assignments. It is added in the `.gitignore` file by default.
   `machine_type` value. The `resource_multiplier` controls the maximum values
   of cpu, memory and node number.
 ### Running terraform
-* `terraform fmt` - To format the files, optional. 
-* `terraform init` - Install dependencies, needed to run only one time after
-  checking out this repo.
+* __Optional:__  `terraform fmt` - To format the files. 
+* `terraform init -backend-config backend.tfvars` - Install dependencies,
+  needed to run only one time after checking out this repo. All the parameters
+  can also be passed through the command line, look
+  [here](https://www.terraform.io/docs/language/settings/backends/configuration.html#partial-configuration)
+  for more information.
 * `terraform plan -var project_id=<value> -var service_account=<value>` - Make
   sure to verify the output of the plan. A var file can be used instead of
   command line arguments.
@@ -134,4 +137,3 @@ assignments. It is added in the `.gitignore` file by default.
   text file. In that case it is recommended to provide all values in
   `terraform.tfvars` file as it is automatically loade by terraform.
 * `terraform destory` - Obvious, isn't it.
-
