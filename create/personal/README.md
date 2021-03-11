@@ -60,6 +60,7 @@ From [here](https://learn.hashicorp.com/terraform).
     iam.serviceAccounts.get
     iam.serviceAccounts.list
     resourcemanager.projects.get
+    storage.buckets.create
 ```
 * Download the json formatted service account key to this current folder and
   rename it to `credentials.json`. In case the key file has a different name or
@@ -96,7 +97,20 @@ From [here](https://learn.hashicorp.com/terraform).
 ```
 * Pass this service account name to `service account` variable.
 * No service account key need to be downloaded.
+### GCS bucket for remote state
+It is recommended to use [provided terraform script](../gcs-bucket/README.md)
+to create the bucket. 
+### Using config file
+Use `.tfvars` extension in case of using a config file with key/value
+assignments. It is added in the `.gitignore` file by default.
 ## Create cluster
+### Setting remote states
+* Three parameters `bucket`, `prefix` and `credentials` needs to be set. The
+  credentials refers to a service account key file that has granted the
+  `Storage Object Admin` IAM role. Details are given
+  [here](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
+* The paremetes either can be given in the command line or through a config
+  file via `-backend-config` argument. Run `terraform init --help` for details.
 ### Setting variables
 * All the variables are defined in the `vars.tf` file.
 * __Required:__ `project_id` and `service_account` variables needs to be set.  
@@ -114,7 +128,10 @@ From [here](https://learn.hashicorp.com/terraform).
   sure to verify the output of the plan. A var file can be used instead of
   command line arguments.
 * `terraform apply -var project_id=<value> -var service_account=<value>` - To
-  create the resources. A var file can be used instead of command line
-  arguments.
+  create the resources. 
+* __Optional:__ Instead of command line arguments, `terraform plan` and
+  `terraform apply` can also be run by providing all the variable values in a
+  text file. In that case it is recommended to provide all values in
+  `terraform.tfvars` file as it is automatically loade by terraform.
 * `terraform destory` - Obvious, isn't it.
 
