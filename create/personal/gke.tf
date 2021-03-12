@@ -7,6 +7,9 @@ data "google_container_engine_versions" "central1c" {
 
 # GKE cluster
 resource "google_container_cluster" "primary" {
+  depends_on = [
+    google_compute_network.vpc,
+  ]
   provider = google
   name     = local.gke_name_tag
   location = var.zone

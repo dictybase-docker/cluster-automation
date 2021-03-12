@@ -90,7 +90,7 @@ variable "master_ipv4_cidr_range" {
 }
 
 variable "start_time" {
-  default     =  "2021-03-12T00:13:33+00:00"
+  default     = "2021-03-12T00:13:33+00:00"
   description = "recurring start time for maintenance window"
 }
 
