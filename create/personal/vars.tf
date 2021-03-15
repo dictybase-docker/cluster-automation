@@ -94,6 +94,11 @@ variable "start_time" {
   description = "recurring start time for maintenance window"
 }
 
+variable "topic" {
+  default     = "gke-cluster-upgrade"
+  description = "topic name for google pub sub"
+}
+
 
 locals {
   gke_name_tag = format("%s-%s", var.project_id, "personal-cluster")
