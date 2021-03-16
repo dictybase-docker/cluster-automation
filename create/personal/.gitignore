@@ -33,3 +33,6 @@ credentials.json
 
 # Ignore tfvars file
 *.tfvars
+
+# Ignore kubeconfig file
+kubeconfig.yaml

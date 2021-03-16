@@ -99,6 +99,16 @@ variable "topic" {
   description = "topic name for google pub sub"
 }
 
+variable "kubeconfig_template_file" {
+  default     = "template/kubeconfig-template.yaml.tpl"
+  description = "kubeconfig template file"
+}
+
+variable "kubeconfig_output_file" {
+  default     = "kubeconfig.yaml"
+  description = "name of kubeconfig file to access cluster"
+}
+
 
 locals {
   gke_name_tag = format("%s-%s", var.project_id, "personal-cluster")
