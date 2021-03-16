@@ -9,7 +9,7 @@ data "google_container_engine_versions" "central1c" {
 resource "google_container_cluster" "primary" {
   depends_on = [
     google_compute_network.vpc,
-    google_pubsub_lite_subscription.cluster_upgrade,
+    google_pubsub_subscription.cluster_upgrade,
   ]
   provider = google
   name     = local.gke_name_tag
@@ -75,7 +75,7 @@ resource "google_container_cluster" "primary" {
   notification_config {
     pubsub {
       enabled = true
-      topic   = google_pubsub_lite_topic.cluster_upgrade.name
+      topic   = format("projects/%s/topics/%s", var.project_id, google_pubsub_topic.cluster_upgrade.name)
     }
   }
 }

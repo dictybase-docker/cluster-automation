@@ -95,7 +95,7 @@ variable "start_time" {
 }
 
 variable "topic" {
-  default     = "gke-cluster-upgrade"
+  default     = "gke-cluster-upgrade-notify"
   description = "topic name for google pub sub"
 }
 
