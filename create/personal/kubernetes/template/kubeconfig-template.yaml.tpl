@@ -15,4 +15,5 @@ preferences: {}
 users:
 - name: ${context}
   user:
-    token: ${token}
+    client-certificate: ${client_certificate}
+    client-key: ${client_key}
