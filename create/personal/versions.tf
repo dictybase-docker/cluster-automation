@@ -2,7 +2,7 @@ terraform {
   required_providers {
     google = {
       source  = "hashicorp/google-beta"
-      version = "3.58.0"
+      version = "3.67.0"
     }
     local = {
       source  = "hashicorp/local"
@@ -10,7 +10,7 @@ terraform {
     }
     kubernetes = {
       source  = "hashicorp/kubernetes"
-      version = "2.0.2"
+      version = "2.1.0"
     }
   }
   backend "gcs" {}
