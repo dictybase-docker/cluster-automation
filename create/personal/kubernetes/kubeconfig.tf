@@ -8,11 +8,9 @@ resource "local_file" "kubeconfig" {
   content = templatefile(
     var.kubeconfig_template_file,
     {
-      cluster_ca_certificate = google_container_cluster.primary.master_auth.0.cluster_ca_certificate,
-      endpoint               = google_container_cluster.primary.endpoint,
-      context                = google_container_cluster.primary.name,
-      client_certificate     = google_container_cluster.primary.master_auth.0.client_certificate,
-      client_key             = google_container_cluster.primary.master_auth.0.client_key,
+      cluster_ca_cert  = var.cluster_ca_cert,
+      cluster_endpoint = var.cluster_endpoint,
+      context          = var.cluster_name,
   })
   filename = var.kubeconfig_output_file
 }

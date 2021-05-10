@@ -1,8 +1,8 @@
 apiVersion: v1
 clusters:
 - cluster:
-    certificate-authority-data: ${cluster_ca_certificate}
-    server: https://${endpoint}
+    certificate-authority-data: ${cluster_ca_cert}
+    server: https://${cluster_endpoint}
   name: ${context}
 contexts:
 - context:
@@ -15,5 +15,3 @@ preferences: {}
 users:
 - name: ${context}
   user:
-    client-certificate: ${client_certificate}
-    client-key: ${client_key}
