@@ -2,9 +2,6 @@ data "google_client_config" "client" {}
 
 
 resource "local_file" "kubeconfig" {
-  depends_on = [
-    google_container_cluster.primary
-  ]
   content = templatefile(
     var.kubeconfig_template_file,
     {
