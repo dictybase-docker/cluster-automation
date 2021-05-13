@@ -6,10 +6,6 @@ variable "cluster_endpoint" {}
 
 variable "cluster_ca_cert" {}
 
-variable "kubeconfig_output_file" {}
-
-variable "kubeconfig_template_file" {}
-
 variable "kubeconfig_output_file" {
   default     = "kubeconfig.yaml"
   description = "name of kubeconfig file to access cluster"
