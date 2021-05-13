@@ -67,12 +67,12 @@ resource "google_container_cluster" "primary" {
     cluster_ipv4_cidr_block  = var.cluster_ipv4_cidr_range
     services_ipv4_cidr_block = var.services_ipv4_cidr_range
   }
-  notification_config {
-    pubsub {
-      enabled = true
-      topic   = format("projects/%s/topics/%s", var.project_id, google_pubsub_topic.cluster_upgrade.name)
-    }
-  }
+  # notification_config {
+  #   pubsub {
+  #     enabled = true
+  #     topic   = format("projects/%s/topics/%s", var.project_id, google_pubsub_topic.cluster_upgrade.name)
+  #   }
+  # }
 }
 
 # Separately Managed Node Pool
