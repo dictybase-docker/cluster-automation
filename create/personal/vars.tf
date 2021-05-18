@@ -65,3 +65,6 @@ variable "image_type" {
   default = "cos_containerd"
 }
 
+variable "namespace" {
+  description = "Namespace to use in Kubernetes"
+}

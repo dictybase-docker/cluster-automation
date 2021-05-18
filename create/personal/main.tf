@@ -22,4 +22,5 @@ module "kubernetes-config" {
   cluster_id       = module.gke-cluster.cluster_id # creates dependency on cluster creation
   cluster_endpoint = module.gke-cluster.cluster_endpoint
   cluster_ca_cert  = module.gke-cluster.cluster_ca_cert
+  namespace        = var.namespace
 }

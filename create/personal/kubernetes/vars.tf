@@ -15,3 +15,5 @@ variable "kubeconfig_output_file" {
   default     = "kubeconfig.yaml"
   description = "name of kubeconfig file to access cluster"
 }
+
+variable "namespace" {}
