@@ -15,3 +15,4 @@ preferences: {}
 users:
 - name: ${context}
   user:
+    token: ${token}

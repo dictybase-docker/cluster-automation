@@ -1,5 +1,5 @@
 output "cluster_id" {
-  value       = google_container_cluster.primary.id
+  value = google_container_cluster.primary.id
 }
 
 output "cluster_name" {
@@ -13,5 +13,7 @@ output "cluster_endpoint" {
 }
 
 output "cluster_ca_cert" {
-  value       = google_container_cluster.primary.master_auth.0.cluster_ca_certificate
+  sensitive   = true
+  description = "The cluster_ca_certificate value for use with the kubernetes provider."
+  value       = base64decode(google_container_cluster.primary.master_auth.0.cluster_ca_certificate)
 }
