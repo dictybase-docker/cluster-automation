@@ -1,6 +1,4 @@
 resource "kubernetes_service_account" "admin" {
-  automount_service_account_token = true
-
   metadata {
     name      = "admin"
     namespace = var.namespace
