@@ -114,3 +114,6 @@ locals {
   gke_name_tag = format("%s-%s", var.project_id, "personal-cluster")
 }
 
+variable "service_account_iam_role" {
+  default = "roles/editor"
+}
