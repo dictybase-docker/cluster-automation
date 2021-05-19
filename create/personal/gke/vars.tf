@@ -99,10 +99,6 @@ variable "topic" {
   description = "topic name for google pub sub"
 }
 
-locals {
-  gke_name_tag = format("%s-%s", var.project_id, "personal-cluster")
-}
-
 variable "k8s_template_file" {
   default     = "gke/template/k8s-template.tfvars.tpl"
   description = "k8s template file"
@@ -111,4 +107,9 @@ variable "k8s_template_file" {
 variable "k8s_output_file" {
   default     = "k8s.tfvars"
   description = "list of variable definitions used in creation of kubeconfig file"
+}
+
+# local values
+locals {
+  gke_name_tag = format("%s-%s", var.project_id, "personal-cluster")
 }

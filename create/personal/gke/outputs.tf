@@ -13,7 +13,6 @@ output "cluster_endpoint" {
 }
 
 output "cluster_ca_cert" {
-  sensitive   = true
   description = "The cluster_ca_certificate value for use with the kubernetes provider."
-  value       = base64decode(google_container_cluster.primary.master_auth.0.cluster_ca_certificate)
+  value       = google_container_cluster.primary.master_auth.0.cluster_ca_certificate
 }
